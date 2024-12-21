@@ -1,0 +1,37 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Meson Setup",
+            "type": "shell",
+            "command": "meson setup builddir",
+            "group": "build",
+            "problemMatcher": [],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            }
+        },
+        {
+            "label": "Meson Compile",
+            "type": "shell",
+            "command": "meson compile -C builddir",
+            "group": "build",
+            "problemMatcher": [],
+            "dependsOn": "Meson Setup",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            }
+        },
+        {
+            "label": "Run Sandships",
+            "type": "shell",
+            "command": "./builddir/sandships",
+            "group": "test",
+            "problemMatcher": [],
+            "dependsOn": "Meson Compile",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            }
+        }
+    ]
+}
